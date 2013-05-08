@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8'/>
+    <title>Media Time pseudo-class filters</title>
+    <script class='remove'>
+      var respecConfig = {
+          specStatus: "unofficial"
+      ,   shortName: "css-media-time"
+      ,   editors: [
+                {   name: "Some name" }
+          ]
+      ,   copyrightStart: 2012
+      ,   noIDLIn:      true
+      ,   isRecTrack:   false
+      ,   isNoTrack:    true
+      ,   format:       'markdown'
+      ,   repo:         "ffjdj"
+      };
+    </script>
+    <script src='http://www.w3.org/Tools/respec/respec-w3c-common' class='remove' async></script>
+    
+  </head>
+  <body style="width: 43em;">
+    <section id='abstract'>
+      This document describes a proposal for a new CSS pseudo class which enables styling elements based on the current time position in a media element.
+    </section>
+    
+    <section id='intro'>
+      Introduction
+      ============
+      
+      The media-time pseudo-class provides a mechanism to select and style elements based on the current time position in a media element. Media elements are described in [[HTML5]].
+      
+      It allows styling the media element itself, or any element with a selector expressible relationship to the media element. For example, it can be used to display or super-impose subtitles, hyperlinks, commentary, related images (graphs and diagrams) and, why not, other videos.
+      
+      It's just hover/active, but for media time instead of page/mouse space.
+    </section>
+
+    The -media-time pseudo-class
+    ============================
+
+    The media-time pseudo class `:-media-time(startMs,?endTime)`, is a funtional notation taking either one or two non-negative integer arguments indicating time coordinates in milliseconds with relation to the matching media element's current time.
+
+The first argument indicates the starting point in media time when the expression becomes true.
+
+The second (optional) argument indicates the ending point in media time when the expression becomes true. If the argument is missing, it indicates that once entered the expression is true until infinity.
+
+This draft also specifies a constant value `:-media-end` which can be used as a parameter which indicates when the media has ended.
+
+    Examples
+    --------
+
+    Given a video element with the class tutorial, the following rule will show .beginning elements when the video's current time is (within 250ms) between 0 and 4 seconds.
+
+    <pre class='example'>video.tutorial:-media-time(0, 4000) ~ div .beginning{
+        display: block;
+    }
+    </pre>
+  </body>
+</html>
+
+
